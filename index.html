@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Crisil</title>
+</head>
+<script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"></script>
+
+<body>
+    <a-scene embedded arjs='sourceType: webcam;'>
+        <a-video src="/assets/Videos/Crisil.mp4" width="2" 
+        height="1.2" rotation="-90 0 0" scale="2 2 2" opacity="1">
+        </a-video>
+        <a-marker-camera type="pattern" url="assets/marker/pattern-Marker.patt"></a-marker-camera>
+        </a-scene>
+</body>
+</html>

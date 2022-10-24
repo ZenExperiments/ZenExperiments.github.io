@@ -1,0 +1,9 @@
+{
+    "git.autoRepositoryDetection": false,
+    "git.autorefresh": false,
+    "github.gitAuthentication": false,
+    "git.confirmEmptyCommits": false,
+    "git.decorations.enabled": false,
+    "git.detectSubmodules": false,
+    "git.enabled": false
+}

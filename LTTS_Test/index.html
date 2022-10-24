@@ -7,8 +7,8 @@
     <title>LTTS Stories</title>
     <script src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/LTTS_Test/ar-view-aframe/dist/aframe-v1.2.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/LTTS_Test/ar-view-webar/aframe/build/aframe-ar.js"></script>
-    <script src="https://github.com/ZenExperiments/ZenExperiments.github.io/blob/main/LTTS_Test/ar-view-webar/gesture-detector.js"></script>
-    <script src="https://github.com/ZenExperiments/ZenExperiments.github.io/blob/main/LTTS_Test/ar-view-webar/gesture-handler.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/LTTS_Test/ar-view-webar/gesture-handler.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/LTTS_Test/ar-view-webar/gesture-detector.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/LTTS_Test/ar-view-aframe/extras/dist/aframe-extras.min.js"></script>
 
 </head>
@@ -17,7 +17,7 @@
     <a-scene arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" device-orientation-permission-ui="enabled: false" loading-screen="enabled: false" embedded renderer="logarithmicDepthBuffer: true;" vr-mode-ui="enabled: false" gesture-detector id="scene">
     
         <a-assets>
-            <a-asset-item id="arcode" src="/LTTS_Test/files/models/AR-Code-1630419481762.glb"></a-asset-item>
+            <a-asset-item id="arcode" src="https://ar-code.com/files/AR-Code-1630419481762.glb"></a-asset-item>
         </a-assets>
     
         <a-marker preset="custom" type="pattern" url="https://ar-code.com/logo/pattern-webar.patt" smooth="true" smoothCount="2" smoothTolerance="0.01" smoothThreshold="2" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerA">

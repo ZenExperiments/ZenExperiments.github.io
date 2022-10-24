@@ -1,32 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <meta name="description" content="AR Code generator & scanner, create your first Augmented Reality 3D experience, add it anywhere." />
     <title>LTTS Stories</title>
     <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"></script>
 
 </head>
-<body>
-    <a-scene vr-mode-ui="enabled: false;"
-    renderer="logarithmicDepthBuffer: true; precision: medium;" 
-    embedded 
-    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
-
+<body id="body" style="background-color:#000000;margin: 0px;overflow: hidden;">
+    
+    <a-scene arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" device-orientation-permission-ui="enabled: false" loading-screen="enabled: false" embedded renderer="logarithmicDepthBuffer: true;" vr-mode-ui="enabled: false" gesture-detector id="scene">
+    
         <a-assets>
-        <a-asset-item id="arcode" src="/LTTS_Test/files/models/AR-Code-1630419481762.glb"></a-asset-item>
+            <a-asset-item id="arcode" src="/LTTS_Test/files/models/AR-Code-1630419481762.glb"></a-asset-item>
         </a-assets>
-
-        <a-marker preset="custom" type="pattern" url="LTTS_Test/files/scans/pattern-Marker.patt" smooth="true" smoothcount="2" smoothtolerance="0.01" smooththreshold="2" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerA" material="" arjs-anchor="" arjs-hit-testing="">
-            <a-entity id="bowser-model" gltf-model="#arcode" position="0 0 0" scale="4 4 4" class="clickable" animation-mixer="" gesture-handler="">
-            </a-entity>
+    
+        <a-marker preset="custom" type="pattern" url="LTTS_Test/files/scans/pattern-Marker.patt" smooth="true" smoothCount="2" smoothTolerance="0.01" smoothThreshold="2" raycaster="objects: .clickable" emitevents="true" cursor="fuse: false; rayOrigin: mouse;" id="markerA">
+    
+            <a-entity id="bowser-model" gltf-model="#arcode" position="0 0 0" scale="4 4 4" class="clickable" animation-mixer gesture-handler></a-entity>
+    
         </a-marker>
-
-        <a-entity camera=""></a-entity>
-
+    
+        <a-entity camera></a-entity>
     </a-scene>
     
+    <div style="position: fixed; bottom: 10px; right: 10px; max-width:160px; text-align: center; z-index: 1;color: grey; font-family: Arial, Helvetica, sans-serif;">Point your device's camera at the AR Code. 1 finger to rotate, 2 fingers to resize.</div>
+    
+    <a href="https://ar-code.com/0tXMaqYSG?view=preview"><div style="position: fixed; top: 20px; right: 20px; width:100px; height:100px; text-align: right; z-index: 1;color: grey; font-size: 20px; font-family: Arial, Helvetica, sans-serif;"><strong>X</strong></div></a>
+    
 </body>
-</html>
+    
+    <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-164018386-1', {
+      'storage': 'none',
+       storeGac: false,
+    });
+    ga('send', 'pageview');
+    </script>
+    </html>

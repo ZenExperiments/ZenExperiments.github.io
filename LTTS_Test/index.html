@@ -1,5 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>Crisil</title>
+</head>
+<script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"></script>
+
+  <body>
+    <a-scene embedded arjs='sourceType: webcam;'>
+      <a-asset-item id="lttsstories" src="LTTS_Test/files/models/AR-Code-1630419481762.glb"></a-asset-item>   
+      <a-marker preset="custom" type="pattern" url="LTTS_Test/files/scans/paattern-Marker.patt">
+        <a-entity id="bowser-model" gltf-model="#lttsstories" position="0 0 0" scale="4 4 4" class="clickable" animation-mixer gesture-handler></a-entity>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
   <head>
     <meta http-equiv="content-type" content ="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
@@ -22,4 +42,4 @@
       <a-entity camera></a-entity>
     </a-scene>
   </body>
-</html>
+</html> -->

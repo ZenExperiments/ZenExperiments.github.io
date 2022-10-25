@@ -14,11 +14,6 @@
 
 </head>
 <body>
-    <!-- <a-scene 
-    vr-mode-ui="enabled: false;"
-    renderer="logarithmicDepthBuffer: true; precision: medium;" 
-    embedded 
-    arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"> -->
 
     <a-scene 
     arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;" 
@@ -30,7 +25,7 @@
     gesture-detector id="scene">
 
         <a-assets>
-        <a-asset-item id="arcode" src="/files/models/AR-Code-1630419481762.glb"></a-asset-item>
+            <a-asset-item id="arcode" src="/files/models/AR-Code-1630419481762.glb"></a-asset-item>
         </a-assets>
 
         <a-marker 
@@ -60,6 +55,15 @@
         <a-entity camera></a-entity>
 
     </a-scene>
-    
+    <div style="position: fixed; bottom: 10px; right: 10px; max-width:160px; text-align: center; z-index: 1;color: grey; font-family: Arial, Helvetica, sans-serif;">Point your device's camera at the AR Code. 1 finger to rotate, 2 fingers to resize.</div>
 </body>
+
+<script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-164018386-1', {
+      'storage': 'none',
+       storeGac: false,
+    });
+    ga('send', 'pageview');
+    </script>
 </html>

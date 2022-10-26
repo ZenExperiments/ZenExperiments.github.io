@@ -18,13 +18,14 @@
 <body id="body" style="background-color:#000000;margin: 0px;overflow: hidden;">
     <a-scene
     renderer="colorManagement: true;"
-    model-viewer="gltfModel: #triceratops; title: Triceratops"
-    vr-mode-ui="enabled: false">
+    model-viewer="gltfModel: #triceratops; title: Triceratops">
     
         <a-assets>
             <a-asset-item id="triceratops"
-            src="https://cdn.aframe.io/examples/ar/models/triceratops/scene.gltf"></a-asset-item>
+            src="/files/models/scene.gltf"></a-asset-item>
         </a-assets>
+
+        <a-gltf-model src="#triceratops"></a-gltf-model>
     </a-scene>
 </body>
 </html>

@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/gh/MattrExp/Aframe-Model-Viewer@main/dist/1.2/model-viewer.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/MattrExp/Aframe-Model-Viewer@main/dist/background-gradient.js"></script>
 
+
 </head>
 <body id="body" style="background-color:#000000;margin: 0px;overflow: hidden;">
     <a-scene
@@ -27,12 +28,11 @@
             src="/files/models/Har-CarMod.gltf"></a-asset-item>
         </a-assets>
 
-        <a-entity id="modelPivot">
-            <a-entity rotation="0 0 0" animation-mixer="" shadow="" id="modelEl" gltf-model=""></a-entity>
-            <a-entity rotation="0"  hide-on-enter-ar=""></a-entity>
-            <a-entity rotation="0"  shadow="" ar-shadows="" visible=""></a-entity>
+        <a-entity id="modelPivot" look-controls:enabled="false">
+            <a-entity position="0 0 6" animation-mixer="" shadow="" id="modelEl" gltf-model=""></a-entity>
       </a-entity>
 
     </a-scene>
+    <a href="intent://arvr.google.com/scene-viewer/1.0?file=https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Avocado/glTF/Avocado.gltf&mode=ar_only#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;">Avocado</a>;
 </body>
 </html>

@@ -18,14 +18,16 @@
 <body id="body" style="background-color:#000000;margin: 0px;overflow: hidden;">
     <a-scene
     renderer="colorManagement: true;"
-    model-viewer="gltfModel: #avatar;">
+    model-viewer="gltfModel: #avatar;"
+    device-orientation-permission-ui="enabled: false" 
+    loading-screen="enabled: false">
     
         <a-assets>
             <a-asset-item id="avatar"
             src="/files/models/Har-CarMod.gltf"></a-asset-item>
         </a-assets>
 
-        <a-entity id="rig" position="0 0 3">
+        <a-entity id="rig" position="0 0 6">
             <a-camera id="camera"></a-camera>
         </a-entity>
 

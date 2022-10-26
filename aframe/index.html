@@ -27,9 +27,11 @@
             src="/files/models/Har-CarMod.gltf"></a-asset-item>
         </a-assets>
 
-        <a-entity id="rig" position="0 0 6">
-            <a-camera id="camera" look-controls.enabled="false"></a-camera>
-        </a-entity>
+        <a-entity id="modelPivot">
+            <a-entity rotation="0 0 0" animation-mixer="" shadow="" id="modelEl" gltf-model=""></a-entity>
+            <a-entity rotation="0"  hide-on-enter-ar=""></a-entity>
+            <a-entity rotation="0"  shadow="" ar-shadows="" visible=""></a-entity>
+      </a-entity>
 
     </a-scene>
 </body>

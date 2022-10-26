@@ -6,22 +6,24 @@
     <meta name="description" content="AR Code generator & scanner, create your first Augmented Reality 3D experience, add it anywhere." />
     <title>LTTS Stories</title>
 
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
-    <script src="/aframe/model-viewer.js"></script>
-    <script src="/aframe/ar-hit-test.js"></script>
-    <script src="/aframe/ar-shadows.js"></script>
-    <script src="/aframe/hide-on-enter-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/MattrExp/Aframe-Model-Viewer@main/dist/hide-on-enter-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/MattrExp/Aframe-Model-Viewer@main/dist/ar-shadows.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/MattrExp/Aframe-Model-Viewer@main/dist/ar-hit-test.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/MattrExp/Aframe-Model-Viewer@main/dist/1.2/model-viewer.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/MattrExp/Aframe-Model-Viewer@main/dist/background-gradient.js"></script>
 
 </head>
-<body>
+<body id="body" style="background-color:#000000;margin: 0px;overflow: hidden;">
     <a-scene
     renderer="colorManagement: true;"
-    model-viewer="gltfModel: #triceratops; title: Triceratops">
+    model-viewer="gltfModel: #triceratops; title: Triceratops"
+    vr-mode-ui="enabled: false">
     
         <a-assets>
             <a-asset-item id="triceratops"
-            src="/files/models/AR-Code-1630419481762.glb"
+            src="/files/models/scene.gltf"
             response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
         </a-assets>
     </a-scene>

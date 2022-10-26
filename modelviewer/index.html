@@ -8,13 +8,14 @@
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 <body>
-    <model-viewer src="/files/models/AR-Code-1630419481762.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls  shadow-intensity="1">
+    <model-viewer src="/files/models/AR-Code-1630419481762.glb" ar ar-modes="webxr scene-viewer quick-look" shadow-intensity="1" loading="eager">
+
         <div class="progress-bar hide" slot="progress-bar">
             <div class="update-bar"></div>
         </div>
-        <button slot="ar-button" id="ar-button">
-            View in your space
-        </button>
+        <button slot="ar-button" id="ar-button" style="background-color: white; border-radius: 100px; border: none; font-size:14px; color: black; padding: 15px 32px; text-align: center; position: absolute; top: 15%; left: 50%; transform: translate(-50%, 0%)">View in AR
+        </button>  
+        
         <div id="ar-prompt">
             <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
         </div>

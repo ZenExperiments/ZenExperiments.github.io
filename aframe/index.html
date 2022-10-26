@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <meta name="description" content="AR Code generator & scanner, create your first Augmented Reality 3D experience, add it anywhere." />
+    <title>LTTS Stories</title>
+
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
+    <script src="model-viewer.js"></script>
+</head>
+<body>
+    <a-scene
+    renderer="colorManagement: true;"
+    model-viewer="gltfModel: #triceratops; title: Triceratops"
+    loading-screen="enabled: false"
+    vr-mode-ui="enabled: false">
+    
+        <a-assets>
+            <a-asset-item id="triceratops"
+            src="https://cdn.aframe.io/examples/ar/models/triceratops/scene.gltf"
+            response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+    
+            <a-asset-item id="reticle"
+            src="https://cdn.aframe.io/examples/ar/models/reticle/reticle.gltf"
+            response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+        </a-assets>
+    </a-scene>
+</body>
+</html>

@@ -8,17 +8,7 @@
     <script src="https://rawgit.com/chenzlabs/three.ar.js/0f645a5/dist/three.ar.min.js"></script>
     <script src="https://rawgit.com/chenzlabs/aframe-ar/0cf8d5a/dist/aframe-ar.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-    <script type="text/javascript">
-      AFRAME.registerComponent('shadow-material', {
-        init() {
-            this.material = new THREE.ShadowMaterial();
-            this.el.getOrCreateObject3D('mesh').material = this.material;
-            this.material.opacity = 0.3;
-        }
-      });
-    </script>
-    <!-- Prevent touch causing flicker on iOS. -->
-    <style> * { -webkit-tap-highlight-color: rgba(0,0,0,0); } </style>        
+     
   </head>
 
   <body>
@@ -34,43 +24,5 @@
       </a-entity>
       <a-ring id="cursor" color="teal" radius-inner="0.02" radius-outer="0.03" position="0 -3 -3" rotation="-90 0 0"></a-ring>
     </a-scene>
-
-    <script type="text/javascript">
-      function onSceneLoaded() {
-        const raycaster = document.querySelector('[ar-raycaster]');
-        const cursor = document.querySelector('#cursor');
-        raycaster.addEventListener('raycaster-intersection', (event) => {
-          cursor.setAttribute('position', event.detail.intersections[0].point);
-        });
-
-        const walker = document.querySelector('#walker');
-        const { stringify } = AFRAME.utils.coordinates;
-
-        let firstTime = true;
-        raycaster.addEventListener('click', () => {
-          const target = raycaster.components.cursor.intersection.point;
-
-          if (firstTime) {
-            walker.setAttribute('position', target);
-            firstTime = false;
-          } else {
-            const currentPosition = walker.object3D.position;
-            const distance = currentPosition.distanceTo(target);
-
-            walker.object3D.lookAt(target);
-
-            const animation = document.createElement('a-animation');
-            animation.setAttribute('attribute', 'position');
-            animation.setAttribute('to', stringify(target));
-            animation.setAttribute('dur', distance * 7000);
-            animation.setAttribute('easing', 'linear');
-            walker.appendChild(animation);
-          }
-        });
-      }
-
-      const scene = document.querySelector('a-scene');
-      scene.addEventListener('loaded', onSceneLoaded);
-    </script>
   </body>
 </html>

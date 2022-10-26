@@ -17,14 +17,13 @@
 </head>
 <body id="body" style="background-color:#000000;margin: 0px;overflow: hidden;">
     <a-scene
-    renderer="colorManagement: true;">
+    renderer="colorManagement: true;"
+    model-viewer="gltfModel: #avatar;">
     
         <a-assets>
             <a-asset-item id="avatar"
             src="/files/models/Har-CarMod.gltf"></a-asset-item>
         </a-assets>
-
-        <a-entity gltf-model="#avatar"></a-entity>
 
         <a-entity id="rig" position="0 0 3">
             <a-camera id="camera"></a-camera>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
@@ -14,22 +14,46 @@
     <script src="https://cdn.jsdelivr.net/gh/MattrExp/Aframe-Model-Viewer@main/dist/1.2/model-viewer.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/MattrExp/Aframe-Model-Viewer@main/dist/background-gradient.js"></script>
 
+
 </head>
 <body id="body" style="background-color:#000000;margin: 0px;overflow: hidden;">
     <a-scene
-    renderer="colorManagement: true;">
+    renderer="colorManagement: true;"
+    model-viewer="gltfModel: #avatar;"
+    device-orientation-permission-ui="enabled: false" 
+    loading-screen="enabled: false">
     
         <a-assets>
             <a-asset-item id="avatar"
             src="/files/models/Har-CarMod.gltf"></a-asset-item>
         </a-assets>
 
-        <a-entity gltf-model="#avatar"></a-entity>
-
-        <a-entity id="rig" position="3 0 0">
-            <a-camera id="camera"></a-camera>
-        </a-entity>
+        <a-entity id="modelPivot" look-controls:enabled="false">
+            <a-entity position="0 0 6" animation-mixer="" shadow="" id="modelEl" gltf-model=""></a-entity>
+      </a-entity>
 
     </a-scene>
+    <a href="intent://arvr.google.com/scene-viewer/1.0?file=https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Avocado/glTF/Avocado.gltf&mode=ar_only#Intent;scheme=https;package=com.google.ar.core;action=android.intent.action.VIEW;S.browser_fallback_url=https://developers.google.com/ar;end;">Avocado</a>;
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <title>LTTS Stories</title>
+    <script src="https://aframe.io/releases/0.7.1/aframe.min.js"></script>
+    <script src="https://google-ar.github.io/three.ar.js/dist/three.ar.js"></script>
+    <script src="https://rawgit.com/chenzlabs/aframe-ar/827e9db/dist/aframe-ar.min.js"></script>
+</head>
+
+<body>
+    <a-scene ar>
+        <a-box width="0.25" height="0.25" depth="0.25" position="-0.25 0.125 -0.75" rotation="0 45 0" color="#4CC3D9"></a-box>
+        <a-sphere position="0 0.3125 -1.25" radius="0.3125" color="#EF2D5E"></a-sphere>
+        <a-cylinder position="0.25 0.1875 -0.75" radius="0.125" height="0.375" color="#FFC65D"></a-cylinder>
+        <a-plane position="0 0 -1" rotation="-90 0 0" width="1" height="1" color="#7BC8A4" shadow></a-plane>
+      </a-scene>
 </body>
 </html>

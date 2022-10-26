@@ -18,12 +18,12 @@
 <body id="body" style="background-color:#000000;margin: 0px;overflow: hidden;">
     <a-scene
     renderer="colorManagement: true;"
-    model-viewer="gltfModel: #triceratops; title: Triceratops">
+    model-viewer="gltfModel: #triceratops; title: Triceratops"
+    vr-mode-ui="enabled: false">
     
         <a-assets>
             <a-asset-item id="triceratops"
-            src="https://cdn.jsdelivr.net/gh/MattrExp/Aframe-Model-Viewer@main/Assets/Har-CarMod.gltf"
-            response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+            src="/files/models/scene.gltf"></a-asset-item>
         </a-assets>
     </a-scene>
 </body>

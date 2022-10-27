@@ -5,44 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LTTS Stories</title>
+
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+<style>
+    model-viewer {
+      cursor: grab;
+      display: flex;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      user-select: none;
+    }
+  </style>
+
 </head>
 <body>
-    <model-viewer src="/files/models/AR-Code-1630419481762.glb" ar ar-modes="scene-viewer webxr quick-look" shadow-intensity="1">
-
-        <button slot="ar-button" style="background-color: white; border-radius: 4px; border: none; position: absolute; top: 16px; right: 16px; ">
-            👋 Activate AR
-        </button>
-
-    </model-viewer>
-
-    <script>
-        document.querySelector("#model-viewer").addEventListener('ar-status', (event) => {
-          if(event.detail.status === 'failed'){
-            const error = document.querySelector("#error");
-            error.classList.remove('hide');
-            error.addEventListener('transitionend',(event) => {
-              error.classList.add('hide');
-            });
-          }
-        });
-      </script>
-      <style>
-        #error {
-          background-color: #ffffffdd;
-          border-radius: 16px;
-          padding: 16px;
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate3d(-50%, -50%, 0);
-          transition: opacity 0.3s;
-        }
-        #error.hide {
-          opacity: 0;
-          visibility: hidden;
-          transition: visibility 2s, opacity 1s 1s;
-        }
-      </style>
+    <model-viewer camera-controls touch-action="pan-y" autoplay animation-name="Running" ar ar-modes="webxr scene-viewer" shadow-intensity="1" src="/files/models/CesiumMan.glb" alt="An animate 3D model of a robot"></model-viewer>
 </body>
 </html>

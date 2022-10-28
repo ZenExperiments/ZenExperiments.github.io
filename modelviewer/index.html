@@ -8,14 +8,14 @@
 
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
-<
+
 
 <style>
     model-viewer {
       cursor: grab;
       display: flex;
       height: 90vh;
-      width: 90%;
+      width: 100%;
       position: relative;
       user-select: none;
     }
@@ -24,7 +24,7 @@
 </head>
 <body style="background-color:rgb(44, 44, 44);">
     <model-viewer
-    src="https://cdn.glitch.com/7d7e8236-5fa5-4809-ab74-eb6bf2bef1c6%2Fmodel.glb?sound=https://cdn.glitch.com/7d7e8236-5fa5-4809-ab74-eb6bf2bef1c6%2FPenguin_Emperor_Unisex_Adult.ogg&link=https://prefrontalcortex.de"
+    src="https://cdn.glitch.com/7d7e8236-5fa5-4809-ab74-eb6bf2bef1c6%2Fmodel.glb?sound=https://cdn.glitch.com/7d7e8236-5fa5-4809-ab74-eb6bf2bef1c6%2FPenguin_Emperor_Unisex_Adult.mp3&link=https://prefrontalcortex.de"
     ios-src="https://cdn.glitch.com/7d7e8236-5fa5-4809-ab74-eb6bf2bef1c6%2FPinguinRealComp.reality?v=1580297181648"
     alt="A 3D model of a penguin"
     shadow-intensity="1"
@@ -32,7 +32,7 @@
     ar
     ar-modes="scene-viewer webxr quick-look"
     id="model-viewer">
-    <button slot="ar-button" id="ar-button" style="background-color: white; border-radius: 100px; border: none; font-size:14px; color: black; padding: 15px 32px; text-align: center; position: absolute; top: 15%; left: 50%; transform: translate(-50%, 0%)">
+    <button slot="ar-button" id="ar-button" style="background-color: white; border-radius: 100px; border: none; font-size:14px; color: black; padding: 15px 28px; text-align: center; position: absolute; top: 75%; left: 50%; transform: translate(-50%, 0%)">
     Listen to our SME in AR
     </button>
 

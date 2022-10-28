@@ -6,10 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LTTS Stories</title>
 
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
-
-
+<script>
+    var modelViewer = document.getElementById('model-viewer');
+    modelViewer.addEventListener('load', function () { 
+        modelViewer.activateAR(); 
+    });
+    </script>
 
 <style>
     model-viewer {
@@ -27,10 +31,5 @@
     <model-viewer autoplay animation-name="Running" ar ar-scale="fixed" ar-modes="webxr scene-viewer quick-look fallback" shadow-intensity="1" src="/files/models/CesiumMan.glb" poster alt="An animate 3D model of a robot"></model-viewer>
 
 </body>
-<script>
-    var modelViewer = document.getElementById('model-viewer');
-    modelViewer.addEventListener('load', function () { 
-        modelViewer.activateAR(); 
-    });
-    </script>
+
 </html>

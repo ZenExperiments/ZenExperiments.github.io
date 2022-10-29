@@ -14,8 +14,8 @@
     model-viewer {
       cursor: grab;
       display: flex;
-      height: 90vh;
-      width: 100%;
+      height: 100vh;
+      width: 100vw;
       position: relative;
       user-select: none;
     }
@@ -25,7 +25,7 @@
 <body style="background-color:rgb(44, 44, 44);">
 
     <model-viewer
-    src="https://cdn.glitch.com/7d7e8236-5fa5-4809-ab74-eb6bf2bef1c6%2Fmodel.glb?sound=https://cdn.glitch.com/7d7e8236-5fa5-4809-ab74-eb6bf2bef1c6%2FPenguin_Emperor_Unisex_Adult.mp3&link=https://prefrontalcortex.de"
+    src="/files/models/Avatar_Test/Avatar.glb?sound=/files/Audio/Audio.mp3&link=https://zenexperiments.github.io/modelviewer/index.html"
     ios-src="https://cdn.glitch.com/7d7e8236-5fa5-4809-ab74-eb6bf2bef1c6%2FPinguinRealComp.reality?v=1580297181648"
     alt="A 3D model of a penguin"
     shadow-intensity="1"
@@ -35,8 +35,8 @@
     id="model-viewer"
     camera-target="0m 1m 1m"
     >
-    
-    <button slot="ar-button" id="ar-button" style="background-color: white; border-radius: 100px; border: none; font-size:14px; color: black; padding: 15px 28px; text-align: center; position: absolute; top: 90%; left: 50%; transform: translate(-50%, 0%)">
+
+    <button slot="ar-button" id="ar-button" style="background-color: white; width: 100%; border-radius: 100px; border: none; font-size:14px; color: black; padding: 15px 28px; text-align: center; position: absolute; top: 85%; left: 50%; transform: translate(-50%, 0%)">
     Listen to our SME in AR
     </button>
 

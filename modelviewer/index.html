@@ -24,8 +24,8 @@
 <body style="background-color:rgb(44, 44, 44);">
 
     <model-viewer
-    src="/files/models/Avatar_Test/Avatar.glb?sound=/files/Audio/Audio.mp3"
-    ios-src="/files/models/Avatar_Test/Avatar.usdz"
+    src="/files/models/Avatar_Test/AvatarTest.glb"
+    ios-src="/files/models/Avatar_Test/AvatarTest.usdz"
     shadow-intensity="1"
     ar
     ar-modes="scene-viewer webxr quick-look"
@@ -39,7 +39,7 @@
 
     </model-viewer>
 <script>
-    document.querySelector('#model-viewer').addEventListener('input', (event) => {
+    document.querySelector('#model-viewer').addEventListener('load', (event) => {
     ModelViewerStatic.minimumRenderScale = 1;
     });
 </script>

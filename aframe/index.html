@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
@@ -12,9 +12,11 @@
 <body>
   <a-scene
   renderer="colorManagement: true;"
-  model-viewer="gltfModel: #avatar;">
-  <a-sound src="/files/Audio/Audio.mp3" autoplay="true"></a-sound>
+  model-viewer="gltfModel: #avatar;"
+  sound="src:url(files/Audio/Audio.mp3); loop:true; autoplay: true; positional:false">
+
   <a-assets>
+
     <audio id="avatarAud" src="/files/Audio/Audio.mp3" preload="auto"></audio>
     <a-asset-item id="avatar"
       src="/files/models/Avatar_Test/Avatar.glb"
@@ -22,57 +24,9 @@
 
     <img id="shadow" src="https://cdn.glitch.com/20600112-c04b-492c-8190-8a5ccc06f37d%2Fshadow.png?v=1606338852399"></img>
   </a-assets>
-  <a-entity sound="src: #avatarAud"></a-entity>
+
+  <a-entity sound="src: #avatarAud" gltf-model="#avatar" position="-2.210357318137207 0.3718644106385657 1.1893210652598343"
+          rotation="0 45 0" scale="0.3 0.3 0.3" audio-toggle="playing: true"> </a-entity>
 </a-scene>
 </body>
-</html> -->
-
-<!DOCTYPE html>
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Kitchen</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="index.css" />
-    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
-    <script
-      src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.0.2/dist/aframe-extras.min.js"></script>
-
-  </head>
-
-  <body>
-    <a-scene light="defaultLightsEnabled: false" sound="src:
-      url(./files/Audio/Audio.mp3); loop:true; autoplay: true; volume:0.2;
-      positional: false">
-
-      <!-- Assets -->
-      <a-assets>
-        <!-- Audio Assets -->
-        <audio id="music" src="/files/Audio/Audio.mp3"></audio>
-
-
-        <!-- Models -->
-        <a-asset-item id="radio" src="files/models/Avatar_Test/Avatar.glb"></a-asset-item>
-
-
-
-      <!-- Lights -->
-      <a-entity light="type: ambient; color: #CCC"></a-entity>
-      <a-entity light="type: directional; color: #EEE; intensity: 0.5"
-        position="-1 1 0"></a-entity>
-      <a-entity light="color:#EEE;intensity:0.5" position="3.2 3.3 -0.2"
-        rotation="0 -26.3 0"></a-entity>
-
-
-        <!-- Have to call the handler component last to make sure sound source is attached to the entity -->
-        <a-entity sound="src: #music; volume: .5; loop: true" gltf-model="#radio"
-          position="-2.210357318137207 0.3718644106385657 1.1893210652598343"
-          rotation="0 45 0" scale="0.3 0.3 0.3" audio-toggle="playing: false"></a-entity>
-
-    </a-scene>
-
-  </body>
-
 </html>

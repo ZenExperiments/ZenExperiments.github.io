@@ -1,36 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LTTS Stories</title>
-
-  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-  <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/aframe/model-viewer.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/aframe/ar-hit-test.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/aframe/ar-shadows.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/aframe/background-gradient.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/aframe/hide-on-enter-ar.js"></script>
-
+  <head>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
+    <script src="./hide-on-enter-ar.js"></script>
+    <script src="./ar-shadows.js"></script>
+    <script src="./ar-hit-test.js"></script>
+    <script src="./model-viewer.js"></script>
+    <script src="./background-gradient.js"></script>
 </head>
-
 <body>
-
   <a-scene
   renderer="colorManagement: true;"
-  model-viewer="gltfModel: #triceratops; title: Triceratops">
-
-  <a-sound src="files/Audio/Audio.mp3" autoplay="true"></a-sound>
-
+  model-viewer="gltfModel: #avatar;">
+  <a-sound src="/files/Audio/Audio.mp3" autoplay="true"></a-sound>
   <a-assets>
-    <a-asset-item id="triceratops"
-      src="https://cdn.aframe.io/examples/ar/models/triceratops/scene.gltf"
-      response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-
-    <a-asset-item id="reticle"
-      src="https://cdn.aframe.io/examples/ar/models/reticle/reticle.gltf"
+    <a-asset-item id="avatar"
+      src="/files/models/Avatar_Test/Avatar.glb"
       response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
 
     <img id="shadow" src="https://cdn.glitch.com/20600112-c04b-492c-8190-8a5ccc06f37d%2Fshadow.png?v=1606338852399"></img>

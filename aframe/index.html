@@ -6,47 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LTTS Stories</title>
 
-  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-  <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
+  <script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/aframe/model-viewer.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/aframe/ar-hit-test.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/aframe/ar-shadows.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/aframe/background-gradient.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/aframe/hide-on-enter-ar.js"></script>
-  <script src="script.js"></script>
 
 </head>
+
 <body>
-  <!-- <a-scene
-  renderer="colorManagement: true;"
-  info-message="htmlSrc: #messageText"
-  model-viewer="gltfModel: #triceratops; title: Triceratops">
-  <a-sound src="/files/Audio/Audio.mp3" autoplay="true" position="0 2 5"></a-sound>
+
+  <a-scene 
+  renderer="colorManagement: true;"           
+  model-viewer="gltfModel: #Avatar;">
+
+  <a-sound src="files/Audio/Audio.mp3" autoplay="true"></a-sound>  
+
   <a-assets>
-
-    <a-asset-item id="triceratops"
-      src="/files/models/Avatar_Test/Avatar.glb"
-      response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-
-    <img id="shadow" src="https://cdn.glitch.com/20600112-c04b-492c-8190-8a5ccc06f37d%2Fshadow.png?v=1606338852399"></img>
+    <a-asset-item id="Avatar"
+    src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/models/Avatar_Test/Avatar.glb"></a-asset-item>
   </a-assets>
-</a-scene> -->
 
-<a-scene 
-model-viewer="gltfModel: #Avatar;">
-<assets>
-  <audio id="avatarSpeak" src="/files/Audio/Audio.mp3" preload="auto"></audio>
+  </a-scene>
 
-  <a-asset-item id="triceratops"
-      src="/files/models/Avatar_Test/Avatar.glb"
-      >
-  </a-asset-item>
+  </body>
 
-  <img id="shadow" src="https://cdn.glitch.com/20600112-c04b-492c-8190-8a5ccc06f37d%2Fshadow.png?v=1606338852399"></img>
-
-</assets>
-
-</a-scene>
-
-</body>
 </html>

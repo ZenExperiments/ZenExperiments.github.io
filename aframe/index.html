@@ -1,32 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
-    <script src="./hide-on-enter-ar.js"></script>
-    <script src="./ar-shadows.js"></script>
-    <script src="./ar-hit-test.js"></script>
-    <script src="./model-viewer.js"></script>
-    <script src="./background-gradient.js"></script>
-</head>
-<body>
-  <a-scene
-  renderer="colorManagement: true;"
-  model-viewer="gltfModel: #avatar;"
-  sound="src:url(files/Audio/Audio.mp3); loop:true; autoplay: true; positional:false">
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="howler.js-master/dist/howler.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-asset-item 
+          id="codey" 
+          src="https://content.codecademy.com/courses/learn-a-frame/building-the-environment/codey.gltf"></a-asset-item>
 
-  <a-assets>
+          <audio 
+          id="background"
+          src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav"></audio>
+      </a-assets>
+      
+      <a-entity 
+        gltf-model="#codey" 
+        position="0 2 -4" 
+        scale="0.5 0.5 0.5"
+        animation="property: object3D.position.y;
+          to: 2.2; 
+          dir: alternate; 
+          dur: 2000; 
+          loop: true"></a-entity>
+       
+       <a-sound 
+       src="#background" 
+       autoplay="true"></a-sound>
 
-    <audio id="avatarAud" src="/files/Audio/Audio.mp3" preload="auto"></audio>
-    <a-asset-item id="avatar"
-      src="/files/models/Avatar_Test/Avatar.glb"
-      response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
-
-    <img id="shadow" src="https://cdn.glitch.com/20600112-c04b-492c-8190-8a5ccc06f37d%2Fshadow.png?v=1606338852399"></img>
-  </a-assets>
-
-  <a-entity sound="src: #avatarAud" gltf-model="#avatar" position="-2.210357318137207 0.3718644106385657 1.1893210652598343"
-          rotation="0 45 0" scale="0.3 0.3 0.3" audio-toggle="playing: true"> </a-entity>
-</a-scene>
-</body>
+    </a-scene>
+  </body>
+  <script>
+    var vAudio = document.getElementById("background");
+    var hasInit = false;
+    function playMusic()
+    {
+       if(!hasInit)
+       {
+           hasInit = true;
+           vAudio.play();
+       }
+    }
+ </script>
 </html>

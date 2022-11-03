@@ -1,48 +1,33 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-extras@3.3.0/dist/aframe-extras.min.js"></script>
-    <script src="./hide-on-enter-ar.js"></script>
-    <script src="./ar-shadows.js"></script>
-    <script src="./ar-hit-test.js"></script>
-    <script src="./model-viewer.js"></script>
-    <script src="./background-gradient.js"></script>
-
-   
   </head>
   <body>
-    <a-scene
-    renderer="colorManagement: true;"
-    model-viewer="gltfModel: #avatar">
+    <a-scene>
       <a-assets>
         <a-asset-item 
-        id="avatar"
-        src="/files/models/Avatar_Test/Avatar.glb"
-        response-type="arraybuffer" crossorigin="anonymous"></a-asset-item>
+          id="codey" 
+          src="/files/models/Avatar_Test/Avatar.glb"></a-asset-item>
 
-        <audio 
-        id="avataraud"
-        src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Audio/Audio.wav"></audio>
-
-        <img id="shadow" src="/files/Img/shadow.png"></img>
+          <audio 
+          id="background"
+          src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav"></audio>
       </a-assets>
-       
-       <a-sound 
-       src="#avataraud" 
-       autoplay="true"></a-sound>
+
+      <a-sound 
+      src="#background" 
+      autoplay="true"></a-sound>
+      
+      <a-entity 
+        gltf-model="#codey" 
+        position="0 2 -4" 
+        scale="0.5 0.5 0.5"
+        animation="property: object3D.position.y;
+          to: 2.2; 
+          dir: alternate; 
+          dur: 2000; 
+          loop: true"></a-entity>
 
     </a-scene>
   </body>
-  <script>
-    var vAudio = document.getElementById("avataraud");
-    var hasInit = false;
-    function playMusic()
-    {
-       if(!hasInit)
-       {
-           hasInit = true;
-           vAudio.play();
-       }
-    }
- </script>
 </html>

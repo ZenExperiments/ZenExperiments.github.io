@@ -1,45 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stories</title>
-
-<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-
-
-<style>
-    model-viewer {
-      cursor: grab;
-      display: flex;
-      height: 100vh;
-      width: 100vw;
-      position: relative;
-      user-select: none;
-    }
-  </style>
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LTTS Stories</title>
 </head>
-<body style="background-color:rgb(44, 44, 44);">
-
-    <model-viewer
-    src="/files/models/Avatar_Test/GLB Test.glb?sound=/files/Audio/Audio.mp3"
-    ios-src="/files/models/Avatar_Test/Avatar.usdz"
-    shadow-intensity="1"
-    ar
-    ar-modes="scene-viewer webxr quick-look"
-    id="model-viewer"
-    >
-
-    <button slot="ar-button" id="ar-button" style="background-color: white; width: 80%; border-radius: 100px; border: none; font-size:14px; color: black; padding: 15px 28px; text-align: center; position: absolute; top: 80%; left: 50%; transform: translate(-50%, 0%)">
-    Listen to our SME in AR
-    </button>
-
-    </model-viewer>
+<body>
+  <model-viewer alt="Avatar Speak" src="/files/models/Avatar_Test/Avatar.glb?sound=/files/Audio/Audio.mp3" ar shadow-intensity="1" camera-controls touch-action="pan-y"></model-viewer>
 </body>
-<script>
-  customElements.get("model-viewer").minimumRenderScale = 1;
-</script>
-
 </html>

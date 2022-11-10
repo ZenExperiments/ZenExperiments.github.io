@@ -91,9 +91,11 @@
 
     #video
     {
-      display: block;
-      bottom: 10px; left: 50%; 
+      display: none;
+      bottom:10px; left: 50%; 
       width:90%;
-      height:auto;
+      position: absolute;
+      z-index:1002;
       transform: translate(-50%, 0%);
+
     }

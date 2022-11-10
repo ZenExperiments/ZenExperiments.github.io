@@ -22,11 +22,13 @@
             shadow-intensity="1"
             interaction-prompt="auto"
             class="model-viewer"
-            camera-target="0m 1.0m 1m"
+            camera-target="0m 0.6m 0.5m"
             camera-orbit="0deg 75deg 250%%"
             ar-status="not-presenting"
+            ar ar-modes="scene-viewer webxr quick-look fallback"
+
             >
-            <div class="material-spinner" slot="progress-bar" style="display: none;">
+            <!-- <div class="material-spinner" slot="progress-bar" style="display: none;">
                 <div id="spinnerContainer" class="active">
                     <div class="spinner-layer blue">
                         <div class="circle-clipper left">
@@ -40,7 +42,26 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
+
+            <button 
+                slot="ar-button" 
+                id="ar-button" 
+                style="background: linear-gradient(45deg, rgba(59,173,227,1) 0%, rgba(87,111,230,1) 25%, rgba(152,68,183,1) 51%, rgba(255,53,127,1) 100%);
+                border-radius: 240px; 
+                border: none;   
+                font-size:14px; color: rgb(255, 255, 255); 
+                display: block;
+                padding: 15px 32px; 
+                text-align: center; 
+                position: absolute; 
+                z-index:1001;
+                margin: 4px 2px;
+                top: 70%; left: 50%; 
+                width:90%;
+                transform: translate(-50%, 0%)">
+                <b>LISTEN TO OUR SMEs IN AR</b>
+            </button>
         </model-viewer>
     </div>
 
@@ -50,10 +71,10 @@
     <div class="header">
 
         <!-- Close button -->
-        <picture>
+        <!-- <picture>
             <source srcset="https://fonts.gstatic.com/s/i/googlematerialicons/close/v18/gm_grey200-24dp/1x/gm_close_gm_grey200_24dp.png" media="(prefers-color-scheme: dark)">
             <img src="https://fonts.gstatic.com/s/i/googlematerialicons/close/v18/black-24dp/1x/gm_close_black_24dp.png" alt="Close" class="header-close-button">
-        </picture>
+        </picture> -->
 
         <!-- Logo -->
         <picture>
@@ -65,7 +86,7 @@
     <!-- VIDEO PLACEMENT -->
 
     <div class="viewer-bottom">
-        <div class="ui-button-container hidden">
+        <!-- <div class="ui-button-container hidden">
             <span class="ui-left-button"></span>
             <span class="ui-right-button"></span>
         </div>
@@ -84,9 +105,9 @@
                 <img alt="" class="upsell-button-icon" src="https://www.gstatic.com/search-ar-dev/ic_FPO_view_in_ar_white.svg">
             </div>
             <div class="upsell-button-text">View in your space in the Google app</div>
-        </div>
+        </div> -->
 
-        <!-- <div class="bottom-tray">
+        <div class="bottom-tray">
             <div class="pill-clickable-area" style="visibility: visible;">
                 <div class="pill"></div>
             </div>
@@ -98,7 +119,7 @@
             </div>
             <iframe src="./video.html" style="height: 96px;"></iframe>
         </div>
-    </div> -->
+    </div>
 
 
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/2.0.2/model-viewer.min.js"></script>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>model-viewer audio sync</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="demo-styles.css" />
+
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script>
+    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+    <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.js"></script>
+    <script src="https://unpkg.com/fullscreen-polyfill@1.0.2/dist/fullscreen.polyfill.js"></script>
+    <script src="https://unpkg.com/@magicleap/prismatic/prismatic.min.js"></script>
+    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+  </head>
+  <body>
+    <script>
+      function Sync(selector, audioSelector) {
+        var modelViewer = document.querySelector(selector);
+        var sound = document.querySelector(audioSelector);
+        var playRequest = document.querySelector("#overlay");
+
+        sound.addEventListener("timeupdate", () => {
+          modelViewer.currentTime = sound.currentTime;
+          console.log("modelViewer time: " + modelViewer.currentTime);
+        });
+
+        sound.addEventListener("pause", () => {
+          modelViewer.pause();
+        });
+
+        sound.addEventListener("play", () => {
+          modelViewer.play();
+
+          playRequest.classList.add("hide");
+        });
+
+        document.addEventListener("visibilitychange", () => {
+          if (document.visibilityState !== "visible") {
+            sound.pause();
+          }
+        });
+
+        var promise = sound.play();
+        if (promise !== undefined) {
+          promise
+            .then(_ => {
+              console.log("Autoplay has worked");
+              playRequest.classList.add("hide");
+            })
+            .catch(error => {
+              // Show a "Play" button so that user can start playback.
+              console.log("Autoplay has not worked");
+
+              // show the modal dialogue to play this
+              playRequest.classList.remove("hide");
+            });
+        }
+
+        /*
+        // this was needed because modelViewer.currentTime does not update when paused
+        // https://github.com/google/model-viewer/issues/1113
+        function enforceTime() {
+          if (modelViewer === undefined)
+            modelViewer = document.querySelector(selector);
+
+          if (sound.paused) modelViewer.currentTime = sound.currentTime;
+
+          // need to enforce play
+          if (modelViewer.paused && typeof modelViewer.play === "function")
+            modelViewer.play();
+
+          requestAnimationFrame(enforceTime);
+        }
+
+        requestAnimationFrame(enforceTime);
+        */
+      }
+
+      function playNow() {
+        var playRequest = document.querySelector("#overlay");
+        playRequest.classList.add("hide");
+
+        var sound = document.querySelector("#sound");
+        sound.play();
+      }
+
+      function jumpTo(time) {
+        var sound = document.querySelector("#sound");
+        sound.currentTime = time;
+      }
+    </script>
+
+    <div id="overlay" class="show">
+      <div id="request-press-play">
+        <button onclick="playNow()">
+          Start Audio Playback<br />(needs user interaction)
+        </button>
+      </div>
+    </div>
+
+    <div id="card">
+      <!-- All you need to put beautiful, interactive 3D content on your site: -->
+      <model-viewer
+        src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/models/Avatar_Test/Avatar.glb?sound=https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Audio/Audio.mp3"
+        ios-src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/models/Avatar_Test/Avatar.reality"
+        alt="A 3D model of a penguin"
+        shadow-intensity="1"
+        camera-controls
+        interaction-prompt="auto"
+        auto-rotate
+        autoplay
+        ar ar-modes="webxr scene-viewer quick-look fallback"
+        id="model-viewer"
+      >
+      </model-viewer>
+      <section class="attribution">
+        <div>
+          <span>
+            <h1>Cute Penguin</h1>
+            <span>
+              <audio controls autoplay loop id="sound">
+                <source src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Audio/Audio.mp3" type="audio/mpeg"/>
+              </audio
+            ></span>
+          </span>
+        </div>
+      </section>
+
+      <script>
+        window.addEventListener("load", () => {
+          Sync("#model-viewer", "#sound");
+        });
+      </script>
+    </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer@v0.8.0/dist/model-viewer.js"
+    ></script>
+  </body>
+</html>

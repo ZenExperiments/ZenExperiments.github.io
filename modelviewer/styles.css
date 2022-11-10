@@ -91,7 +91,7 @@
 
     #video
     {
-      display: none;
+      display: block;
       bottom: 10px; left: 50%; 
       width:90%;
       height:auto;

@@ -17,7 +17,7 @@
     {
       var modelViewer = document.querySelector(selector);
       var sound = document.querySelector(audioSelector);
-      var playRequest = document.querySelector("#ar-button");
+      var playRequest = document.querySelector("#overlay");
 
       sound.addEventListener("timeupdate", () => {
         modelViewer.currentTime = sound.currentTime;
@@ -59,7 +59,7 @@
 
     function playNow()
     {
-      var playRequest = document.querySelector("#ar-button");
+      var playRequest = document.querySelector("#overlay");
       playRequest.classList.add("hide");
 
       var sound = document.querySelector("#sound");
@@ -122,6 +122,24 @@
     display: none;
     }
 
+    model-viewer > #overlay
+    {
+      background: linear-gradient(45deg, rgba(59,173,227,1) 0%, rgba(87,111,230,1) 25%, rgba(152,68,183,1) 51%, rgba(255,53,127,1) 100%);
+      border-radius: 240px; 
+      border: none;   
+      font-size:14px; color: rgb(255, 255, 255); 
+      display: block;
+      padding: 15px 32px; 
+      text-align: center; 
+      position: absolute; 
+      z-index:1001;
+      margin: 4px 2px;
+      top: 85%; left: 50%; 
+      width:90%;
+      transform: translate(-50%, 0%);
+      display:none;
+    }
+
     model-viewer[ar-tracking="not-tracking"] > #ar-failure 
     {
     display: block;
@@ -144,7 +162,6 @@
   <!-- AR button -->
 
     <button 
-        onclick="playNow()"
         slot="ar-button" 
         id="ar-button" 
         style="background: linear-gradient(45deg, rgba(59,173,227,1) 0%, rgba(87,111,230,1) 25%, rgba(152,68,183,1) 51%, rgba(255,53,127,1) 100%);
@@ -174,7 +191,7 @@
       AR is not tracking! Close and start the experience again
     </button>
 
-    <button id="overlay">
+    <button id="overlay" onclick="playNow()">
       Click to begin the interaction
     </button>
 
@@ -220,7 +237,7 @@
 
 <script>
   window.addEventListener("load", () => {
-    Sync("#modelViewer", "#sound");
+    Sync("#overlay", "#sound");
   });
 </script>
 

@@ -64,6 +64,18 @@
 
       var sound = document.querySelector("#sound");
       sound.play();
+
+      var vid= document.querySelector("#ar-video");
+      vid.play();
+    }
+
+    function show()
+    {
+      document.getElementById("ar-video")
+      .style.display="block";
+
+      document.getElementById("overlay")
+      .style.display="none";
     }
   </script>
 
@@ -94,6 +106,9 @@
     to   { transform: translateX(-100px); }
     }
 
+
+    /* AR Prompt  */
+
     model-viewer > #ar-prompt 
     {
     position: absolute;
@@ -113,6 +128,8 @@
     animation: circle 4s linear infinite;
     }
 
+    /* AR failure */
+
     model-viewer > #ar-failure 
     {
     position: absolute;
@@ -121,6 +138,13 @@
     bottom: 175px;
     display: none;
     }
+
+    model-viewer[ar-tracking="not-tracking"] > #ar-failure 
+    {
+    display: block;
+    }
+
+    /* Begin Interaction  */
 
     model-viewer > #overlay
     {
@@ -134,7 +158,7 @@
       position: absolute; 
       z-index:1001;
       margin: 4px 2px;
-      bottom: 20px; left: 50%; 
+      bottom: 30px; left: 50%; 
       width:90%;
       transform: translate(-50%, 0%);
     }
@@ -144,10 +168,17 @@
       display: block;
     }
 
-    model-viewer[ar-tracking="not-tracking"] > #ar-failure 
+    /* Begin Video */
+
+    model-viewer > #ar-video
     {
-    display: block;
+      display: none;
+      bottom: 10px; left: 50%; 
+      width:90%;
+      height:auto;
+      transform: translate(-50%, 0%);
     }
+
   </style>
 
 <!-- Model Viewer 3D object load: GLB & USDZ-->
@@ -194,9 +225,15 @@
       AR is not tracking! Close and start the experience again
     </button>
 
-    <button id="overlay" onclick="playNow()">
+    <button id="overlay" onclick="playNow(); show()">
       Click to begin
     </button>
+
+    <div id="ar-video">
+      <video>
+        <source src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Img/zen_desktop_banner.mp4" type="video/mp4">
+      </video> 
+    </div>
 
   </model-viewer>
 
@@ -240,7 +277,7 @@
 
 <script>
   window.addEventListener("load", () => {
-    Sync("#overlay", "#sound");
+    Sync("#modelViewer", "#sound", "#ar-video");
   });
 </script>
 

@@ -15,7 +15,7 @@
     function Sync(selector, audioSelector) {
       var modelViewer = document.querySelector(selector);
       var sound = document.querySelector(audioSelector);
-      var playRequest = document.querySelector("#overlay");
+      var playRequest = document.querySelector("#ar-button");
 
       sound.addEventListener("timeupdate", () => {
         modelViewer.currentTime = sound.currentTime;
@@ -75,7 +75,7 @@
     }
 
     function playNow() {
-      var playRequest = document.querySelector("#overlay");
+      var playRequest = document.querySelector("#ar-button");
       playRequest.classList.add("hide");
 
       var sound = document.querySelector("#sound");
@@ -106,8 +106,7 @@
     id="modelViewer"
     camera-target="0m 0.9m 0.4m"
   >
-  <div id="overlay" class="show">
-    <button
+    <button 
         onclick="playNow()"
         slot="ar-button" 
         id="ar-button" 
@@ -125,7 +124,6 @@
         transform: translate(-50%, 0%)">
         <b>LISTEN TO OUR SMEs IN AR</b>
     </button>
-</div>
   </model-viewer>
 
   <div class="logo">

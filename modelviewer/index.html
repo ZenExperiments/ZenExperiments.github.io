@@ -106,24 +106,26 @@
     id="modelViewer"
     camera-target="0m 0.9m 0.4m"
   >
-      <button 
-      onclick="playNow()"
-      slot="ar-button" 
-      id="ar-button" 
-      style="background: linear-gradient(45deg, rgba(59,173,227,1) 0%, rgba(87,111,230,1) 25%, rgba(152,68,183,1) 51%, rgba(255,53,127,1) 100%);
-      border-radius: 240px; 
-      border: none;   
-      font-size:14px; color: rgb(255, 255, 255); 
-      display: block;
-      padding: 15px 32px; 
-      text-align: center; 
-      position: absolute; 
-      margin: 4px 2px;
-      top: 85%; left: 50%; 
-      width:90%;
-      transform: translate(-50%, 0%)">
-      <b>LISTEN TO OUR SMEs IN AR</b>
+  <div id="overlay" class="show">
+    <button
+        onclick="playNow()"
+        slot="ar-button" 
+        id="ar-button" 
+        style="background: linear-gradient(45deg, rgba(59,173,227,1) 0%, rgba(87,111,230,1) 25%, rgba(152,68,183,1) 51%, rgba(255,53,127,1) 100%);
+        border-radius: 240px; 
+        border: none;   
+        font-size:14px; color: rgb(255, 255, 255); 
+        display: block;
+        padding: 15px 32px; 
+        text-align: center; 
+        position: absolute; 
+        margin: 4px 2px;
+        top: 85%; left: 50%; 
+        width:90%;
+        transform: translate(-50%, 0%)">
+        <b>LISTEN TO OUR SMEs IN AR</b>
     </button>
+</div>
   </model-viewer>
 
   <div class="logo">
@@ -150,7 +152,7 @@
 <section class="attribution">
         <div>
             <span>
-                <audio autoplay loop id="sound">
+                <audio controls autoplay loop id="sound">
                   <source src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Audio/Audio.mp3" type="audio/mpeg" />
                 </audio>
             </span>

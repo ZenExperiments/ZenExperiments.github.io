@@ -66,14 +66,11 @@
       var sound = document.querySelector("#sound");
       sound.play();
 
-      var vid= document.querySelector("#ar-video");
+      var vid= document.querySelector("#video");
       vid.play();
 
-      document.getElementById("ar-video")
+      document.getElementById("#video")
       .style.display="block";
-
-      document.getElementById("overlay")
-      .style.display="none";
     }
   </script>
 
@@ -128,7 +125,7 @@
     </button>
 
     <div id="ar-video">
-      <video>
+      <video id="video">
         <source src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Video/zen_desktop_banner.mp4" type="video/mp4">
       </video> 
     </div>

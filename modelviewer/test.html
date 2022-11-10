@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <title>LTTS Stories</title>
-    <link rel="stylesheet" href="./webviewer_css_compiled.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/modelviewer/webviewer_css_compiled.css">
 </head>
 
 
@@ -20,10 +20,10 @@
             alt="Avatar speak"
             shadow-intensity="1"
             interaction-prompt="auto"
-            ar ar-modes="webxr scene-viewer quick-look fallback"
             class="model-viewer"
             camera-target="0m 1.3m 1m"
             camera-orbit="0deg 75deg 250%%"
+            ar-status="not-presenting"
             >
             <div class="material-spinner" slot="progress-bar" style="display: none;">
                 <div id="spinnerContainer" class="active">
@@ -50,8 +50,8 @@
 
         <!-- Close button -->
         <picture>
-            <source srcset="/files/Img/gm_close_black_24dp.png" media="(prefers-color-scheme: dark)">
-            <img src="/files/Img/gm_close_black_24dp.png" alt="Close" class="header-close-button">
+            <source srcset="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Img/gm_close_black_24dp.png" media="(prefers-color-scheme: dark)">
+            <img src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Img/gm_close_black_24dp.png" alt="Close" class="header-close-button">
         </picture>
 
         <!-- Logo -->
@@ -70,8 +70,8 @@
         </div>
         <div class="ar-button">
             <picture>
-                <source srcset="/files/Img/ic_view_in_ar_blue_24px.svg" media="(prefers-color-scheme: dark)">
-                <img alt="" class="view-icon" src="/files/Img/ic_view_in_ar_blue_24px.svg">
+                <source srcset="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Img/ic_view_in_ar_blue_24px.svg" media="(prefers-color-scheme: dark)">
+                <img alt="" class="view-icon" src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Img/ic_view_in_ar_blue_24px.svg">
                 </picture>View in your space<a rel="ar" style="display: none;" href="">
                 <img alt="">
             </a>
@@ -87,14 +87,14 @@
                     <div class="model-subheader" style="display: none;"></div>
                 </div>
             </div>
-            <iframe src="./video.html" style="height: 208px;"></iframe>
+            <iframe src="./video.html" style="height: 96px;"></iframe>
         </div>
     </div>
 
 
 
 
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <script defer="defer" id="base-js" src="./webviewer_compiled.js" data-imp-js="/scene-viewer/static/viewer_web.js"></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/2.0.2/model-viewer.min.js"></script>
+    <script defer="defer" id="base-js" src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/modelviewer/webviewer_compiled.js" data-imp-js="/scene-viewer/static/viewer_web.js"></script>
 </body>
 </html>

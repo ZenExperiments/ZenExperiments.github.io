@@ -13,7 +13,6 @@
 <body style="background-color:rgb(0, 0, 0);">
 
 <!-- Script for the audio sync with model -->
-  <script type="text/javascript" src=""
   <script>
     function Sync(selector, audioSelector) 
     {
@@ -73,7 +72,25 @@
       document.getElementById("video")
       .style.display="block";
     }
+
+    function stopNow()
+  {
+    var pauseRequest = document.querySelector("#default-exit-webxr-ar-button");
+      pauseRequest.classList.add("hide");
+
+      var sound = document.querySelector("#sound");
+      sound.pause();
+
+      var vid= document.querySelector("#video");
+      vid.pause();
+
+      document.getElementById("video")
+      .style.display="none";
+  }
+
   </script>
+
+
 
   
 
@@ -162,7 +179,7 @@
 <section class="attribution">
   <div>
     <span>
-      <audio loop id="sound">
+      <audio autoplay loop id="sound">
         <source src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Audio/Audio.mp3" type="audio/mpeg" />
       </audio>
     </span>

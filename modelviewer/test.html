@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="demo-styles.css" />
+    <link rel="stylesheet" href="./demo-styles.css" />
 
     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script>
     <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
@@ -112,24 +112,18 @@
         ios-src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/models/Avatar_Test/Avatar.reality"
         alt="A 3D model of a penguin"
         shadow-intensity="1"
-        camera-controls
         interaction-prompt="auto"
-        auto-rotate
-        autoplay
         ar ar-modes="webxr scene-viewer quick-look fallback"
         id="model-viewer"
       >
       </model-viewer>
       <section class="attribution">
         <div>
-          <span>
-            <h1>Cute Penguin</h1>
             <span>
-              <audio controls autoplay loop id="sound">
-                <source src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Audio/Audio.mp3" type="audio/mpeg"/>
-              </audio
-            ></span>
-          </span>
+                <audio controls autoplay loop id="sound">
+                  <source src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Audio/Audio.mp3" type="audio/mpeg"/>
+                </audio>
+            </span>
         </div>
       </section>
 
@@ -139,10 +133,5 @@
         });
       </script>
     </div>
-
-    <script
-      type="module"
-      src="https://unpkg.com/@google/model-viewer@v0.8.0/dist/model-viewer.js"
-    ></script>
   </body>
 </html>

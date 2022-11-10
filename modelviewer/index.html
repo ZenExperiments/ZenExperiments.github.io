@@ -34,7 +34,10 @@
     camera-target="0m 0.9m 0.4m"
     autoplay
   >
-
+  <div class="viewer-bottom">
+    <iframe src="https://zenexperiments.github.io/modelviewer/video.html" frameborder="0" style="height:200px; top: 0; left: 50%; position: absolute; z-index:1006;" ></iframe>
+  </div>
+  
     <button 
       slot="ar-button" 
       id="ar-button" 
@@ -75,9 +78,7 @@
     z-index:2;
     transform: translate(-50%, 0%)">
   </div>
-  <div class="viewer-bottom">
-    <iframe src="https://zenexperiments.github.io/modelviewer/video.html" frameborder="0" style="height:200px; top: 0; left: 50%; position: absolute; z-index:1006;" ></iframe>
-  </div>
+
 
 </body>
 </html>

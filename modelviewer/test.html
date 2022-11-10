@@ -1,162 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>model-viewer audio sync</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>LTTS Stories</title>
+    <link rel="stylesheet" href="./webviewer_css_compiled.css">
+</head>
 
-    <!-- <link rel="stylesheet" href="./demo-styles.css" /> -->
 
-    <!-- <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script>
-    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
-    <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.js"></script>
-    <script src="https://unpkg.com/fullscreen-polyfill@1.0.2/dist/fullscreen.polyfill.js"></script>
-    <script src="https://unpkg.com/@magicleap/prismatic/prismatic.min.js"></script>
-    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer></script> -->
-    <script type="module" src="https://unpkg.com/@google/model-viewer@v0.8.0/dist/model-viewer.js"></script>
-  </head>
+<body>
 
-  <body style="background-color:rgb(0, 0, 0);">
-    <script>
-      function Sync(selector, audioSelector) {
-        var modelViewer = document.querySelector(selector);
-        var sound = document.querySelector(audioSelector);
-        var playRequest = document.querySelector("#overlay");
+     <!-- 3D MODEL -->
 
-        sound.addEventListener("timeupdate", () => {
-          modelViewer.currentTime = sound.currentTime;
-          console.log("modelViewer time: " + modelViewer.currentTime);
-        });
-
-        sound.addEventListener("pause", () => {
-          modelViewer.pause();
-        });
-
-        sound.addEventListener("play", () => {
-          modelViewer.play();
-
-          playRequest.classList.add("hide");
-        });
-
-        document.addEventListener("visibilitychange", () => {
-          if (document.visibilityState !== "visible") {
-            sound.pause();
-          }
-        });
-
-        var promise = sound.play();
-        if (promise !== undefined) {
-          promise
-            .then(_ => {
-              console.log("Autoplay has worked");
-              playRequest.classList.add("hide");
-            })
-            .catch(error => {
-              // Show a "Play" button so that user can start playback.
-              console.log("Autoplay has not worked");
-
-              // show the modal dialogue to play this
-              playRequest.classList.remove("hide");
-            });
-        }
-
-        /*
-        // this was needed because modelViewer.currentTime does not update when paused
-        // https://github.com/google/model-viewer/issues/1113
-        function enforceTime() {
-          if (modelViewer === undefined)
-            modelViewer = document.querySelector(selector);
-
-          if (sound.paused) modelViewer.currentTime = sound.currentTime;
-
-          // need to enforce play
-          if (modelViewer.paused && typeof modelViewer.play === "function")
-            modelViewer.play();
-
-          requestAnimationFrame(enforceTime);
-        }
-
-        requestAnimationFrame(enforceTime);
-        */
-      }
-
-      function playNow() {
-        var playRequest = document.querySelector("#overlay");
-        playRequest.classList.add("hide");
-
-        var sound = document.querySelector("#sound");
-        sound.play();
-      }
-    </script>
-
-    <!-- <div id="overlay" class="show">
-      <div id="request-press-play">
-        <button onclick="playNow()">
-          Start Audio Playback<br />(needs user interaction)
-        </button>
-      </div>
-    </div> -->
-
-    <style>
-        *{
-        margin: 0;
-        padding: 0;
-        }
-        #modelViewer{
-        width: 100%;
-        height:100vh;
-        overflow: hidden;
-        z-index:900;
-        }
-    </style>
-
-    <div id="card">
-      <!-- All you need to put beautiful, interactive 3D content on your site: -->
-    <model-viewer
-        src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/models/Avatar_Test/Avatar.glb?sound=https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Audio/Audio.mp3"
-        ios-src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/models/Avatar_Test/Avatar.reality"
-        alt="Avatar speak"
-        shadow-intensity="1"
-        interaction-prompt="auto"
-        ar ar-modes="webxr scene-viewer quick-look fallback"
-        id="modelViewer"
-        camera-target="0m 0.9m 0.4m"
-        >
-        <button
-            onclick="playNow()"
-            slot="ar-button" 
-            id="ar-button" 
-            style="background: linear-gradient(45deg, rgba(59,173,227,1) 0%, rgba(87,111,230,1) 25%, rgba(152,68,183,1) 51%, rgba(255,53,127,1) 100%);
-            border-radius: 240px; 
-            border: none;   
-            font-size:14px; color: rgb(255, 255, 255); 
-            display: block;
-            padding: 15px 32px; 
-            text-align: center; 
-            position: absolute; 
-            margin: 4px 2px;
-            top: 85%; left: 50%; 
-            width:90%;
-            transform: translate(-50%, 0%)">
-            <b>LISTEN TO OUR SMEs IN AR</b>
-        </button>
-    </model-viewer>
-      <section class="attribution">
-        <div>
-            <span>
-                <audio controls autoplay loop id="sound">
-                  <source src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Audio/Audio.mp3" type="audio/mpeg"/>
-                </audio>
-            </span>
-        </div>
-      </section>
-
-      <script>
-        window.addEventListener("load", () => {
-          Sync("#modelViewer", "#sound");
-        });
-      </script>
+    <div class="model-container" style="margin-top: -104px;">
+        <model-viewer
+            src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/models/Avatar_Test/Avatar.glb?sound=https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Audio/Audio.mp3"
+            ios-src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/models/Avatar_Test/Avatar.reality"
+            alt="Avatar speak"
+            shadow-intensity="1"
+            interaction-prompt="auto"
+            ar ar-modes="webxr scene-viewer quick-look fallback"
+            class="model-viewer"
+            camera-target="0m 1.3m 1m"
+            camera-orbit="0deg 75deg 250%%"
+            >
+            <div class="material-spinner" slot="progress-bar" style="display: none;">
+                <div id="spinnerContainer" class="active">
+                    <div class="spinner-layer blue">
+                        <div class="circle-clipper left">
+                            <div class="circle fit"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle fit"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle fit"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </model-viewer>
     </div>
-  </body>
+
+
+    <!-- HEADER DESIGN -->
+
+    <div class="header">
+
+        <!-- Close button -->
+        <picture>
+            <source srcset="/files/Img/gm_close_black_24dp.png" media="(prefers-color-scheme: dark)">
+            <img src="/files/Img/gm_close_black_24dp.png" alt="Close" class="header-close-button">
+        </picture>
+
+        <!-- Logo -->
+        <picture>
+            <source srcset="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Img/Logo.png" media="(prefers-color-scheme: dark)">
+            <img src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Img/Logo.png" alt="LTTS" class="LTTS-logo">
+        </picture>
+    </div>
+
+    <!-- VIDEO PLACEMENT -->
+
+    <div class="viewer-bottom">
+        <div class="ui-button-container hidden">
+            <span class="ui-left-button"></span>
+            <span class="ui-right-button"></span>
+        </div>
+        <div class="ar-button">
+            <picture>
+                <source srcset="/files/Img/ic_view_in_ar_blue_24px.svg" media="(prefers-color-scheme: dark)">
+                <img alt="" class="view-icon" src="/files/Img/ic_view_in_ar_blue_24px.svg">
+                </picture>View in your space<a rel="ar" style="display: none;" href="">
+                <img alt="">
+            </a>
+        </div>
+
+        <div class="bottom-tray">
+            <div class="pill-clickable-area" style="visibility: visible;">
+                <div class="pill"></div>
+            </div>
+            <div class="result">
+                <div class="model-info">
+                    <div class="model-header">Demo</div>
+                    <div class="model-subheader" style="display: none;"></div>
+                </div>
+            </div>
+            <iframe src="./video.html" style="height: 208px;"></iframe>
+        </div>
+    </div>
+
+
+
+
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script defer="defer" id="base-js" src="./webviewer_compiled.js" data-imp-js="/scene-viewer/static/viewer_web.js"></script>
+</body>
 </html>

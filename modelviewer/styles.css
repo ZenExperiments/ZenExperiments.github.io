@@ -99,3 +99,12 @@
       transform: translate(-50%, 0%);
 
     }
+
+    /* Stop Audio */
+
+
+    /* Hide Video */
+    model-viewer[ar-tracking="not-tracking"] > #video
+    {
+        display:none;
+    }

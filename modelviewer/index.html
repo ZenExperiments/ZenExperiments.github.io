@@ -19,6 +19,7 @@
       var modelViewer = document.querySelector(selector);
       var sound = document.querySelector(audioSelector);
       var playRequest = document.querySelector("#overlay");
+      var pauseRequest = document.querySelector("#exit-button");
 
       sound.addEventListener("timeupdate", () => {
         modelViewer.currentTime = sound.currentTime;
@@ -75,7 +76,7 @@
 
     function stopNow()
   {
-    var pauseRequest = document.querySelector("#default-exit-webxr-ar-button");
+    var pauseRequest = document.querySelector("#exit-button");
       pauseRequest.classList.add("hide");
 
       var sound = document.querySelector("#sound");
@@ -132,11 +133,11 @@
       onclick="stopNow()"
       slot="exit-webxr-ar-button"
       id="exit-button"
-      style="background-image: url(/files/Img/CloseButton.png);
-      width: 10px; height: 10px;
+      style="background-image: url(https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Img/CloseButton.png);
+      width: 30px; height: 30px;
       display: block;
       position: absolute;
-      top: 10%; left: 90%;">
+      top: 10%; right: 10%;">
     </button>
 
 

@@ -1,153 +1,221 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>LTTS Stories</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" href="./webviewer_css_compiled.css">
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/modelviewer/webviewer_css_compiled.css"> -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <link rel="stylesheet" href="./styles.css" />
 
+  <title>LTTS Stories</title>
 </head>
 
+<body style="background-color:rgb(0, 0, 0);">
 
-<body>
+<!-- Script for the audio sync with model -->
+  <script>
+    function Sync(selector, audioSelector) 
+    {
+      var modelViewer = document.querySelector(selector);
+      var sound = document.querySelector(audioSelector);
+      var playRequest = document.querySelector("#overlay");
+      var pauseRequest = document.querySelector("#exit-button");
 
-     <!-- 3D MODEL -->
+      sound.addEventListener("timeupdate", () => {
+        modelViewer.currentTime = sound.currentTime;
+        console.log("modelViewer time: " + modelViewer.currentTime);
+      });
 
-    <div class="model-container" style="margin-top: -48px;">
-        <model-viewer
-            src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/models/Avatar_Test/Avatar.glb?sound=https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Audio/Audio.mp3"
-            ios-src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/models/Avatar_Test/Avatar.reality"
-            alt="Avatar speak"
-            shadow-intensity="1"
-            interaction-prompt="auto"
-            class="model-viewer"
-            camera-target="0m 0.9m 0.5m"
-            camera-orbit="0deg 75deg 250%%"
-            ar-status="not-presenting"
-            ar ar-modes="scene-viewer webxr quick-look fallback"
+      sound.addEventListener("pause", () => {
+        modelViewer.pause();
+      });
 
-            >
-            <div class="material-spinner" slot="progress-bar" style="display: none;">
-                <div id="spinnerContainer" class="active">
-                    <div class="spinner-layer blue">
-                        <div class="circle-clipper left">
-                            <div class="circle fit"></div>
-                        </div>
-                        <div class="gap-patch">
-                            <div class="circle fit"></div>
-                        </div>
-                        <div class="circle-clipper right">
-                            <div class="circle fit"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      sound.addEventListener("play", () => {
+        modelViewer.play();
 
-            <!-- <button 
-                slot="ar-button" 
-                id="ar-button" 
-                style="background: linear-gradient(45deg, rgba(59,173,227,1) 0%, rgba(87,111,230,1) 25%, rgba(152,68,183,1) 51%, rgba(255,53,127,1) 100%);
-                border-radius: 240px; 
-                border: none;   
-                font-size:14px; color: rgb(255, 255, 255); 
-                display: block;
-                padding: 15px 32px; 
-                text-align: center; 
-                position: absolute; 
-                z-index:1001;
-                margin: 4px 2px;
-                top: 70%; left: 50%; 
-                width:90%;
-                transform: translate(-50%, 0%)">
-                <b>LISTEN TO OUR SMEs IN AR</b>
-            </button> -->
-        </model-viewer>
+        playRequest.classList.add("hide");
+      });
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState !== "visible") {
+          sound.pause();
+        }
+      });
+
+      var promise = sound.play();
+      if (promise !== undefined) {
+        promise
+          .then(_ => {
+            console.log("Autoplay has worked");
+            playRequest.classList.add("hide");
+          })
+          .catch(error => {
+            // Show a "Play" button so that user can start playback.
+            console.log("Autoplay has not worked");
+
+            // show the modal dialogue to play this
+            playRequest.classList.remove("hide");
+          });
+      }
+    }
+
+    function playNow()
+    {
+      var playRequest = document.querySelector("#overlay");
+      playRequest.classList.add("hide");
+
+      var sound = document.querySelector("#sound");
+      sound.play();
+
+      var vid= document.querySelector("#video");
+      vid.play();
+
+      document.getElementById("video")
+      .style.display="block";
+    }
+
+    function stopNow()
+  {
+    var pauseRequest = document.querySelector("#exit-button");
+      pauseRequest.classList.add("hide");
+
+      var sound = document.querySelector("#sound");
+      sound.pause();
+
+      var vid= document.querySelector("#video");
+      vid.pause();
+
+      document.getElementById("video")
+      .style.display="none";
+  }
+
+  </script>
+
+
+<!-- Model Viewer 3D object load: GLB & USDZ-->
+
+  <model-viewer
+    src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/models/Avatar_Test/Avatar.glb?sound=https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Audio/Audio.mp3"
+    ios-src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/models/Avatar_Test/Avatar.reality"
+    alt="Avatar speak"
+    shadow-intensity="1"
+    interaction-prompt="auto"
+    ar ar-modes="scene-viewer webxr quick-look fallback"
+    id="modelViewer"
+    camera-target="0m 0.9m 0.4m"
+  >
+
+  <!-- AR button -->
+
+    <button 
+        slot="ar-button" 
+        id="ar-button" 
+        style="background: linear-gradient(45deg, rgba(59,173,227,1) 0%, rgba(87,111,230,1) 25%, rgba(152,68,183,1) 51%, rgba(255,53,127,1) 100%);
+        border-radius: 240px; 
+        border: none;   
+        font-size:14px; color: rgb(255, 255, 255); 
+        display: block;
+        padding: 15px 32px; 
+        text-align: center; 
+        position: absolute; 
+        z-index:1001;
+        margin: 4px 2px;
+        top: 85%; left: 50%; 
+        width:90%;
+        transform: translate(-50%, 0%)">
+        <b>LISTEN TO OUR SMEs IN AR</b>
+    </button>
+
+    <button
+      onclick="stopNow()"
+      slot="exit-webxr-ar-button"
+      id="exit-button"
+      style="background-image: url(https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Img/CloseButton.png);
+      width: 30px; height: 30px;
+      display: block;
+      position: absolute;
+      top: 10%; right: 10%;">
+    </button>
+
+
+    <!-- Prompts -->
+
+    <div id="ar-prompt">
+      <img src="/files/Img/hand.png">
     </div>
 
+    <button id="ar-failure">
+      AR is not tracking! Close and start the experience again
+    </button>
 
-    <!-- HEADER DESIGN -->
+    <button id="overlay" onclick="playNow()">
+      Click to begin
+    </button>
 
-    <div class="header">
-
-        <!-- Close button -->
-        <picture>
-            <source srcset="https://fonts.gstatic.com/s/i/googlematerialicons/close/v18/gm_grey200-24dp/1x/gm_close_gm_grey200_24dp.png" media="(prefers-color-scheme: dark)">
-            <img src="https://fonts.gstatic.com/s/i/googlematerialicons/close/v18/black-24dp/1x/gm_close_black_24dp.png" alt="Close" class="header-close-button">
-        </picture>
-
-        <!-- Logo -->
-        <picture>
-            <source srcset="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Img/Logo.png" media="(prefers-color-scheme: dark)">
-            <img src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Img/Logo.png" alt="LTTS" class="LTTS-logo">
-        </picture>
+    <div id="ar-video">
+      <video id="video">
+        <source src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Video/zen_desktop_banner.mp4" type="video/mp4">
+      </video> 
     </div>
 
-    <div class="overflow-popup">
-        <div class="overflow-header">Powered by Google</div>
-        <hr>
-        <a class="overflow-button privacy-policy-button" href="https://policies.google.com/privacy">Privacy Policy</a>
-        <a class="overflow-button terms-of-service-button" href="https://policies.google.com/terms">Terms of Service</a>
-    </div>
-    <div class="alert-box">
-        <div class="alert-box-title">Couldn't load object</div>
-        <div class="alert-box-message">Looks like there's something wrong with this object</div>
-        <button class="alert-box-close-button">
-            <b>OK</b>
-        </button>
-    </div>
+  </model-viewer>
 
-    <!-- VIDEO PLACEMENT -->
+  <!-- Design elements -->
 
-    <div class="viewer-bottom">
-        <div class="ui-button-container hidden" style="padding-left: 21.75px; padding-right: 21.75px;">
-            <span class="ui-left-button"></span>
-            <span class="ui-right-button"></span>
-        </div>
-        <div class="ar-button">
-            <picture>
-                <source srcset="https://www.gstatic.com/search-ar-dev/ic_FPO_view_in_ar_white.svg" media="(prefers-color-scheme: dark)">
-                <img alt="" class="view-icon" src="https://www.gstatic.com/search-ar-dev/ic_FPO_view_in_ar.svg">
-            </picture>View in your space
-            <a rel="ar" style="display: none;" href="">
-                <img alt="">
-            </a>
-        </div>
+  <div class="logo">
+    <img 
+      src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Img/Logo.png" 
+      alt="Logo" 
+      style="top: 7%; left: 50%; 
+      width:90%;
+      max-width: 300px;
+      position: absolute; 
+      z-index:1000;
+      transform: translate(-50%, 0%)">
+  </div>
 
-        <div class="upsell-button">
-            <div class="upsell-button-icon-backdrop">
-                <img alt="" class="upsell-button-icon" src="https://www.gstatic.com/search-ar-dev/ic_FPO_view_in_ar_white.svg">
-            </div>
-            <div class="upsell-button-text">View in your space in the Google app</div>
-        </div>
+  <!-- <div class="name">
+    <img 
+      src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Img/Logo.png" 
+      alt="Logo" 
+      style="top: 7%; left: 50%; 
+      width:90%;
+      max-width: 300px;
+      position: absolute; 
+      z-index:1000;
+      transform: translate(-50%, 0%)">
+  </div> -->
 
-        <div class="bottom-tray">
-            <div class="pill-clickable-area" style="visibility: visible;">
-                <div class="pill"></div>
-            </div>
-            <div class="result">
-                <div class="model-info">
-                    <div class="model-header">Demo</div>
-                    <div class="model-subheader" style="display: none;"></div>
-                </div>
-                <div class="bottom-tray-buttons">
-                    <div class="visit-button" style="display: none;">
-                        <picture>
-                            <source srcset="https://fonts.gstatic.com/s/i/googlematerialicons/public/v12/black-24dp/1x/gm_public_black_24dp.png" media="(prefers-color-scheme: dark)">
-                            <img src="https://fonts.gstatic.com/s/i/googlematerialicons/public/v12/white-24dp/1x/gm_public_white_24dp.png" alt="Link icon" class="visit-button-icon">
-                        </picture>
-                        <span class="visit-button-label">Visit</span>
-                    </div>
-                </div>
-            </div>
-            <iframe src="https://arvr.google.com/searchar/infocard?data=Cg0vZy8xMWZ0NTNyXzM1EAE&hl=en-IN&origin=https://scene-viewer-preview.appspot.com" style="height: 96px;"></iframe>
-        </div>
-    </div>
+  <div>
+    <img 
+    src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Img/Grid.png" 
+    alt="Grid" 
+    style="bottom: 0; left: 50%; 
+    width:100vw;
+    position: absolute; 
+    z-index:2;
+    transform: translate(-50%, 0%)">
+  </div>
 
+<!-- Audio goes here -->
 
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/2.0.2/model-viewer.min.js"></script>
-    <script defer id="base-js" src="./webviewer_compiled.js"></script>
+<section class="attribution">
+  <div>
+    <span>
+      <audio autoplay id="sound">
+        <source src="https://cdn.jsdelivr.net/gh/ZenExperiments/ZenExperiments.github.io@main/files/Audio/Audio.mp3" type="audio/mpeg" />
+      </audio>
+    </span>
+  </div>
+</section>
 
+<!-- Model audio sync -->
+
+<script>
+  window.addEventListener("load", () => {
+    Sync("#modelViewer", "#sound", "#ar-video");
+  });
+</script>
 
 </body>
 </html>

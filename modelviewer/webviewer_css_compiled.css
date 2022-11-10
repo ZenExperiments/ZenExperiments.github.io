@@ -217,8 +217,7 @@ model-viewer:not(:defined)>* {
  top:0
 }
 .LTTS-logo {
- width:60%;
- max-width: 300px;
+width:50vw;
  padding-top:4px;
  left: 50%; 
  transform: translate(-50%, 0%);

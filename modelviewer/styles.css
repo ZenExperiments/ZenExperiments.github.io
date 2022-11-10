@@ -1,0 +1,99 @@
+
+    *{
+    margin: 0;
+    padding: 0;
+    }
+
+
+    #modelViewer
+    {
+    width: 100%;
+    height:100vh;
+    overflow: hidden;
+    z-index:900;
+    }
+
+    @keyframes circle
+    {
+    from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
+    to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
+    }
+
+    @keyframes elongate 
+    {
+    from { transform: translateX(100px); }
+    to   { transform: translateX(-100px); }
+    }
+
+
+    /* AR Prompt  */
+
+    model-viewer > #ar-prompt 
+    {
+    position: absolute;
+    left: 50%;
+    bottom: 175px;
+    animation: elongate 2s infinite ease-in-out alternate;
+    display: none;
+    }
+
+    model-viewer[ar-status="session-started"] > #ar-prompt 
+    {
+    display: block;
+    }
+
+    model-viewer > #ar-prompt > img 
+    {
+    animation: circle 4s linear infinite;
+    }
+
+    /* AR failure */
+
+    model-viewer > #ar-failure 
+    {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 175px;
+    display: none;
+    }
+
+    model-viewer[ar-tracking="not-tracking"] > #ar-failure 
+    {
+    display: block;
+    }
+
+    /* Begin Interaction  */
+
+    model-viewer > #overlay
+    {
+      background: linear-gradient(45deg, rgba(59,173,227,1) 0%, rgba(87,111,230,1) 25%, rgba(152,68,183,1) 51%, rgba(255,53,127,1) 100%);
+      border-radius: 240px; 
+      border: none;   
+      font-size:14px; color: rgb(255, 255, 255); 
+      display: none;
+      padding: 15px 32px; 
+      text-align: center; 
+      position: absolute; 
+      z-index:1001;
+      margin: 4px 2px;
+      bottom: 30px; left: 50%; 
+      width:90%;
+      transform: translate(-50%, 0%);
+    }
+
+    model-viewer[ar-status="object-placed"]> #overlay
+    {
+      display: block;
+    }
+
+    /* Begin Video */
+
+    #ar-video
+    {
+      display: none;
+      bottom: 10px; left: 50%; 
+      width:90%;
+      height:auto;
+      transform: translate(-50%, 0%);
+    }
